@@ -1,0 +1,137 @@
+.sell {
+    max-width: 680px;
+    margin: 0 auto;
+    padding: 40px 20px;
+}
+
+.sell__title {
+    text-align: center;
+    font-size: 30px;
+    margin-bottom: 32px;
+}
+
+.sell-form__group {
+    margin-bottom: 35px;
+}
+
+.sell-form__label {
+    display: block;
+    font-size: 22px;
+    font-weight: 700;
+    margin-bottom: 8px;
+}
+
+.sell-form__image-box {
+    height: 150px;
+    border: 1px dashed #ccc;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.sell-form__image-button {
+    color: #ff5555;
+    border: 1px solid #ff5555;
+    background: #fff;
+    border-radius: 12px;
+    padding: 6px 16px;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+.sell-form__image-input {
+    display: none;
+}
+
+.sell-form__section-title {
+    font-size: 26px;
+    color: #6d6c6c;
+    border-bottom: 1px solid #5f5f5f;
+    padding-bottom: 8px;
+    margin: 32px 0;
+}
+
+.sell-form__category-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 26px 30px;
+    margin-top: 25px;
+}
+
+.sell-form__category-input {
+    display: none;
+}
+
+.sell-form__category-text {
+    display: inline-block;
+    padding: 6px 18px;
+    border: 2px solid #ff5555;
+    border-radius: 25px;
+    color: #ff5555;
+    font-size: 12px;
+    cursor: pointer;
+}
+
+.sell-form__category-input:checked + .sell-form__category-text {
+    background: #ff5555;
+    color: #fff;
+}
+
+.sell-form__input,
+.sell-form__select,
+.sell-form__textarea {
+    width: 100%;
+    box-sizing: border-box;
+    border: 1px solid #aaa;
+    padding: 8px;
+}
+
+.sell-form__price-box {
+    display: flex;
+    align-items: center;
+    border: 1px solid #aaa;
+    padding: 0 12px;
+    height: 45px;
+    box-sizing: border-box;
+}
+
+.sell-form__price-box input {
+    border: none;
+}
+
+.sell-form__price-box input:focus {
+    outline: none;
+}
+
+.sell-form__yen {
+    margin-right: 8px;
+    font-size: 20px;
+}
+
+.sell-form__price-input {
+    border: none;
+    width: 100%;
+    outline: none;
+    font-size: 16px;
+}
+
+.sell-form__textarea {
+    height: 120px;
+}
+
+.sell-form__submit {
+    width: 100%;
+    height: 48px;
+    border: none;
+    background: #ff5555;
+    color: #fff;
+    font-weight: 700;
+    font-size: 20px;
+    margin-top: 24px;
+    cursor: pointer;
+}
+
+.sell-form__input::placeholder {
+    color: #333;
+    font-weight: 700;
+}

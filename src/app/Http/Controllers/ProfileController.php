@@ -1,0 +1,43 @@
+<?php
+
+namespace App\Http\Controllers;
+
+use Illuminate\Http\Request;
+use App\Http\Requests\ProfileRequest;
+use App\Models\User;
+
+class ProfileController extends Controller
+{
+    public function edit()
+    {
+        $user = auth()->user();
+        return view('profile.edit', compact('user'));
+    }
+
+    public function index(Request $request)
+    {
+        $user = auth()->user();
+
+        if ($request->page === 'buy') {
+            $items = $user->purchases()->with('item')->get()->pluck('item');
+        } else {
+            $items = $user->items;
+        }
+
+        return view('profile.index', compact('user', 'items'));
+    }
+
+    public function update(ProfileRequest $request)
+    {
+        $user =  User::find(auth()->id());
+
+        $user->update([
+            'name' => $request->name,
+            'postal_code' => $request->postal_code,
+            'address' => $request->address,
+            'building_name' => $request->building_name,
+        ]);
+
+        return redirect()->route('profile.index');
+    }
+}

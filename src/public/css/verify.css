@@ -1,0 +1,39 @@
+.verify {
+    padding: 120px 20px;
+}
+
+.verify__content {
+    max-width: 600px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.verify__text {
+    margin-bottom: 36px;
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 1.8;
+}
+
+.verify__button {
+    display: inline-block;
+    padding: 12px 24px;
+    border: 1px solid #555;
+    border-radius: 4px;
+    background: #eee;
+    color: #000;
+    font-size: 14px;
+    font-weight: 700;
+}
+
+.verify__form {
+    margin-top: 28px;
+}
+
+.verify__resend {
+    border: none;
+    background: transparent;
+    color: #3490dc;
+    font-size: 14px;
+    cursor: pointer;
+}
