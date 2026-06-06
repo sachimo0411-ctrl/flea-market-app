@@ -27,7 +27,8 @@ Route::get('/register', [AuthController::class, 'register'])
 Route::get('/login', [AuthController::class, 'login'])
     ->name('login');
 
-Route::get('/', [ItemController::class, 'index'])->name('items.index');
+Route::get('/', [ItemController::class, 'index'])
+    ->name('items.index');
 
 Route::get('/item/{item_id}', [ItemController::class, 'show'])
     ->name('items.show');

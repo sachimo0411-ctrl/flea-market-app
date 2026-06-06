@@ -2,8 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Illuminate\Http\Request;
-
 class AuthController extends Controller
 {
     public function register()

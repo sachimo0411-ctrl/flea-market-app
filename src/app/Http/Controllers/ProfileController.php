@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Http\Requests\ProfileRequest;
 use App\Models\User;
+use App\Models\Purchase;
 
 class ProfileController extends Controller
 {
@@ -19,7 +20,10 @@ class ProfileController extends Controller
         $user = auth()->user();
 
         if ($request->page === 'buy') {
-            $items = $user->purchases()->with('item')->get()->pluck('item');
+            $items = Purchase::where('user_id', '$user->id')
+            ->with('item')
+            ->get()
+            ->pluck('item');
         } else {
             $items = $user->items;
         }
