@@ -6,16 +6,22 @@
 <div class="profile">
     <h2 class="profile__heading">プロフィール設定</h2>
 
-    <form class="profile-form" method="post" action="{{ route('profile.update') }}">
+    <form class="profile-form" method="post" action="{{ route('profile.update') }}" enctype="multipart/form-data">
         @csrf
         @method('patch')
 
         <div class="profile-form__image-area">
-            <div class="profile-form__image"></div>
+            <div class="profile-form__image">
+                @if ($user->profile_image)
+                <img id="image-preview" class="profile-form__preview" src="{{ asset('storage/' . $user->profile_image) }}" alt="プロフィール画像">
+                @else
+                <img id="image-preview" class="profile-form__preview" style="display:none;" alt="プロフィール画像">
+                @endif
+            </div>
 
             <label class="profile-form__image-button">
                 画像を選択する
-                <input type="file" name="profile_image" hidden>
+                <input id="profile-image" type="file" name="profile_image" hidden>
             </label>
         </div>
 
@@ -62,4 +68,20 @@
         </div>
     </form>
 </div>
+
+<script>
+    const imageInput = document.getElementById('profile-image');
+    const imagePreview = document.getElementById('image-preview');
+
+    imageInput.addEventListener('change', function() {
+
+        const file = this.files[0];
+
+        if (file) {
+            imagePreview.src = URL.createObjectURL(file);
+            imagePreview.style.display = 'block';
+        }
+    });
+</script>
+
 @endsection

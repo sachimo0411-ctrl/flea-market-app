@@ -21,8 +21,8 @@ class ItemController extends Controller
             if (!$user) {
                 $items = collect();
             } else {
-                $items = Item::whereHas('likes', function ($query) use ($user) {
-                    $query->where('user_id', $user->id);
+                $items = $query->whereHas('likes', function ($q) use ($user) {
+                    $q->where('user_id', $user->id);
                 })->get();
             }
         } else {

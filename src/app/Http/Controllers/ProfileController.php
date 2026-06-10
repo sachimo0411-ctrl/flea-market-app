@@ -20,7 +20,7 @@ class ProfileController extends Controller
         $user = auth()->user();
 
         if ($request->page === 'buy') {
-            $items = Purchase::where('user_id', '$user->id')
+            $items = Purchase::where('user_id', $user->id)
             ->with('item')
             ->get()
             ->pluck('item');
@@ -35,11 +35,18 @@ class ProfileController extends Controller
     {
         $user =  User::find(auth()->id());
 
+        $imagePath = $user->profile_image;
+
+        if ($request->hasFile('profile_image'))
+            $imagePath = $request->file('profile_image')
+                    ->store('profiles', 'public');
+
         $user->update([
             'name' => $request->name,
             'postal_code' => $request->postal_code,
             'address' => $request->address,
             'building_name' => $request->building_name,
+            'profile_image' => $imagePath,
         ]);
 
         return redirect()->route('profile.index');

@@ -14,7 +14,10 @@ use Illuminate\Support\Str;
     <a class="item-tabs__link {{ request('tab') !=='mylist' ? 'item-tabs__link--active' : '' }}" href="{{ route('items.index') }}">
         おすすめ
     </a>
-    <a class="item-tabs__link {{ request('tab') ==='mylist' ? 'item-tabs__link--active' : '' }}" href="{{ route('items.index', ['tab' => 'mylist']) }}">
+    <a class="item-tabs__link {{ request('tab') ==='mylist' ? 'item-tabs__link--active' : '' }}" href="{{ route('items.index', [
+        'tab' => 'mylist',
+        'keyword' => request('keyword')
+    ]) }}">
         マイリスト
     </a>
 </div>

@@ -13,7 +13,11 @@
     <div class="profile-page__inner">
 
         <section class="profile-page__user">
-            <div class="profile-page__image">{{ $user->profile_image }}</div>
+            <div class="profile-page__image">
+                @if ($user->profile_image)
+                <img class="profile-page__preview" src="{{ asset('storage/' . $user->profile_image) }}" alt="プロフィール画像">
+                @endif
+            </div>
 
             <h2 class="profile-page__name">{{ $user->name }}</h2>
 
@@ -33,19 +37,23 @@
 
         <section class="profile-page__items">
             @forelse ($items as $item)
-                <div class="profile-page__item">
+                <a class="profile-page__item" href="{{ route('items.show', $item->id) }}">
                     <div class="profile-page__item-image">
                         @if (Str::startsWith($item->image, 'http'))
                             <img src="{{ $item->image }}" alt="{{ $item->name }}">
                         @else
                             <img src="{{ asset('storage/' . $item->image) }}" alt="{{ $item->name }}">
                         @endif
+                        
+                        @if ($item->is_sold)
+                        <span class="profile-page__sold">SOLD</span>
+                        @endif
                     </div>
 
                     <p class="profile-page__item-name">
                         {{ $item->name }}
                     </p>
-                </div>
+                </a>
             @empty
                 @if (request('page') === 'buy')
                     <p class="profile-page__empty">

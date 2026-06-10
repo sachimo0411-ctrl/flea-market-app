@@ -14,10 +14,16 @@
         <div class="sell-form__group">
             <label class="sell-form__label">商品画像</label>
             <div class="sell-form__image-box">
-                <label class="sell-form__image-button" for="image">画像を選択する</label>
+                <img id="image-preview" class="sell-form__image-preview" alt="商品画像プレビュー">
+                <label id="image-button" class="sell-form__image-button" for="image">
+                    画像を選択する
+                </label>
 
-                <input class="sell-form__image-input" type="file" name="image" id="image">
+                <input class="sell-form__image-input" type="file" name="image" id="image" accept="image/*">
             </div>
+            <button type="button" id="change-image-button" class="sell-form__change-button">
+                画像を変更する
+            </button>
 
             @error('image')
             <p class="form__error">
@@ -111,4 +117,27 @@
         <button class="sell-form__submit" type="submit">出品する</button>
     </form>
 </main>
+
+<script>
+    const imageInput = document.getElementById('image');
+    const imagePreview = document.getElementById('image-preview');
+    const imageButton = document.getElementById('image-button');
+    const changeImageButton = document.getElementById('change-image-button');
+
+    imageInput.addEventListener('change', function() {
+        const file = this.files[0];
+
+        if (file) {
+            imagePreview.src = URL.createObjectURL(file);
+            imagePreview.style.display = 'block';
+
+            imageButton.style.display = 'none';
+            changeImageButton.style.display = 'block';
+        }
+    });
+
+    changeImageButton.addEventListener('click', function() {
+        imageInput.click();
+    });
+</script>
 @endsection

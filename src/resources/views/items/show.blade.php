@@ -4,10 +4,18 @@
 <link rel="stylesheet" href="{{ asset('css/show.css') }}">
 @endsection
 
+@php
+use Illuminate\Support\Str;
+@endphp
+
 @section('content')
 <div class="item-detail">
     <div class="item-detail__image__area">
+        @if (Str::startsWith($item->image, 'http'))
         <img src="{{ $item->image }}" alt="{{ $item->name }}" class="item-detail__image">
+        @else
+            <img src=" {{ asset('storage/' .$item->image) }}" alt="{{ $item->name }}" class="item-detail__image">
+        @endif
     </div>
 
     <div class="item-detail__content">
@@ -21,9 +29,9 @@
                     @csrf
                     <button type="submit" class="item-detail__like-button">
                         @if ($item->likes->contains('user_id', auth()->id()))
-                            <i class="fa-solid fa-heart liked"></i>
+                        <i class="fa-solid fa-heart liked"></i>
                         @else
-                            <i class="fa-regular fa-heart"></i>
+                        <i class="fa-regular fa-heart"></i>
                         @endif
                     </button>
                 </form>
@@ -36,9 +44,9 @@
         </div>
 
         @if ($item->is_sold)
-            <button class="item-detail__purchase" disabled>SOLD OUT</button>
+        <button class="item-detail__purchase" disabled>SOLD OUT</button>
         @else
-            <a class="item-detail__purchase" href="{{ route('purchase.index', $item->id) }}">購入手続きへ</a>
+        <a class="item-detail__purchase" href="{{ route('purchase.index', $item->id) }}">購入手続きへ</a>
         @endif
 
         <section class="item-detail__section">
@@ -86,13 +94,13 @@
                     <textarea name="comment" class="item-detail__textarea"></textarea>
 
                     @error('comment')
-                        <p class="form__error">
-                            {{ $message }}
-                        </p>
+                    <p class="form__error">
+                        {{ $message }}
+                    </p>
                     @enderror
 
                     <button class="item-detail__comment-button" type="submit"
-                    @if ($item->is_sold) disabled @endif>
+                        @if ($item->is_sold) disabled @endif>
                         コメントを送信する
                     </button>
                 </form>

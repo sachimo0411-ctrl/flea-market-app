@@ -77,7 +77,7 @@ Route::get('/mypage', [ProfileController::class, 'index'])
     ->middleware('auth')
     ->name('profile.index');
 Route::get('/mypage/profile', [ProfileController::class, 'edit'])
-    ->middleware(['auth', 'verified'])
+    ->middleware(['auth'])
     ->name('profile.edit');
 Route::patch('/mypage/profile', [ProfileController::class, 'update'])
     ->middleware('auth')
