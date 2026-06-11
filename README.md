@@ -44,3 +44,10 @@ php artisan migrate
 - プロフィール編集機能
 
 ## URL
+- 商品一覧画面:http://localhost
+- 会員登録画面:http://localhost/register
+- ログイン画面:http://localhost/login
+- プロフィール画面:http://localhost/mypage
+- プロフィール編集画面:http://localhost/mypage/profile
+- 商品出品画面:http://localhost/sell
+- phpmyadmin:http://localhost:8080
