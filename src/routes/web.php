@@ -38,6 +38,7 @@ Route::get('/email/verify', function () {
 })
     ->middleware('auth')
     ->name('verification.notice');
+
 Route::get('/email/verify/{id}/{hash}', function(EmailVerificationRequest $request) {
     $request->fulfill();
     return redirect('/mypage/profile');
@@ -77,7 +78,7 @@ Route::get('/mypage', [ProfileController::class, 'index'])
     ->middleware('auth')
     ->name('profile.index');
 Route::get('/mypage/profile', [ProfileController::class, 'edit'])
-    ->middleware(['auth'])
+    ->middleware(['auth', 'verified'])
     ->name('profile.edit');
 Route::patch('/mypage/profile', [ProfileController::class, 'update'])
     ->middleware('auth')

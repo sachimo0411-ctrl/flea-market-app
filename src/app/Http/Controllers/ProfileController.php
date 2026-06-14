@@ -49,6 +49,6 @@ class ProfileController extends Controller
             'profile_image' => $imagePath,
         ]);
 
-        return redirect()->route('profile.index');
+        return redirect()->route('items.index');
     }
 }

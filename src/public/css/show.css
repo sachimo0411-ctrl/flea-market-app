@@ -1,23 +1,28 @@
 .item-detail {
     display: flex;
-    gap: 60px;
-    max-width: 1000px;
-    margin: 60px auto;
-    padding: 0 40px;
+    gap: 100px;
+    max-width: 1180px;
+    align-items: flex-start;
+    padding: 90px 80px;
+    margin: 0 auto;
 }
 
 .item-detail__image-area {
     width: 45%;
+    max-width: 520px;
 }
 
 .item-detail__image {
     width: 100%;
-    aspect-ratio: 1 / 1;
-    object-fit: cover;
+    max-width: 520px;
+    margin-top: 50px;
+    object-fit: contain;
+    display: block;
 }
 
 .item-detail__content {
     width: 45%;
+    max-width: 480px;
 }
 
 .item-detail__name {
@@ -166,6 +171,7 @@
     display: block;
     width: 100%;
     padding: 12px;
+    margin-top: 30px;
     border: none;
     background-color: #ff5555;
     color: #fff;

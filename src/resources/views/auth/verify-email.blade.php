@@ -10,7 +10,7 @@
             メール認証を完了してください。
         </p>
 
-        <a class="verify__button" href="#">
+        <a class="verify__button" href="http://localhost:8025" target="_blank">
             認証はこちらから
         </a>
 
