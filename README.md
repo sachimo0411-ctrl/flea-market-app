@@ -2,7 +2,7 @@
 
 ## 環境構築
 
-###　Dockerビルド
+### Dockerビルド
 ```bash
 git clone git@github.com:sachimo0411-ctrl/flea-market-app.git
 cd flea-market-app
@@ -51,3 +51,12 @@ php artisan migrate
 - プロフィール編集画面:http://localhost/mypage/profile
 - 商品出品画面:http://localhost/sell
 - phpmyadmin:http://localhost:8080
+
+## 工夫した点
+
+### 購入済み商品の再購入防止
+購入済み商品には「SOLD OUT」表示を行い、購入ボタンとコメント送信ボタンを無効化することで同じ商品の重複購入を防止しました。
+
+### 出品画像の編集
+出品画面では設定された画像を表示できるようにし、「画像を変更する」ボタンから別の画像への変更が出来るようにしました。
+ユーザーが現在の設定状態を確認しながら編集できるように意識して実装しました。

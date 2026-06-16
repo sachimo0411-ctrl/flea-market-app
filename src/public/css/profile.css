@@ -17,13 +17,13 @@
 .profile-form__image-area {
     display: flex;
     align-items: center;
-    gap: 30px;
+    gap: 50px;
     margin-bottom: 30px;
 }
 
 .profile-form__image {
-    width: 150px;
-    height: 150px;
+    width: 120px;
+    height: 120px;
     border-radius: 50%;
     background: #d9d9d9;
     overflow: hidden;

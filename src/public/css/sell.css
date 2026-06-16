@@ -80,7 +80,7 @@
 .sell-form__category-list {
     display: flex;
     flex-wrap: wrap;
-    gap: 26px 30px;
+    gap: 30px 20px;
     margin-top: 25px;
 }
 
