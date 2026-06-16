@@ -7,6 +7,8 @@ use App\Models\Purchase;
 use App\Models\User;
 use App\Http\Requests\PurchaseRequest;
 use App\Http\Requests\AddressRequest;
+use Stripe\Stripe;
+use Stripe\Checkout\Session;
 
 class PurchaseController extends Controller
 {
@@ -23,6 +25,31 @@ class PurchaseController extends Controller
         $item = Item::findOrFail($item_id);
         $user = auth()->user();
 
+        $paymentMethods = ['card'];
+
+        if ($request->payment_method === 'コンビニ払い') {
+            $paymentMethods = ['konbini'];
+        }
+
+        Stripe::setApiKey(env('STRIPE_SECRET'));
+
+        $session = Session::create([
+            'payment_method_types' => $paymentMethods,
+            'line_items' => [[
+                'price_data' => [
+                    'currency' => 'jpy',
+                    'product_data' => [
+                        'name' => $item->name,                        
+                        ],
+                        'unit_amount' => $item->price,
+                    ],
+                    'quantity' => 1,
+                ]],
+                'mode' => 'payment',
+                'success_url' => route('items.index', [], true),
+                'cancel_url' => route('purchase.index', ['item_id' => $item->id], true),
+            ]);
+
         Purchase::create([
             'user_id' => $user->id,
             'item_id' => $item->id,
@@ -35,7 +62,8 @@ class PurchaseController extends Controller
             'is_sold' => true,
         ]);
 
-        return redirect()->route('items.index');
+            return redirect()->away($session['url']);
+
     }
 
     public function addressEdit(int $item_id)

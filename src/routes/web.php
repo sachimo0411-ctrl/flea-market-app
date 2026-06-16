@@ -75,7 +75,7 @@ Route::post('/purchase/address/{item_id}', [PurchaseController::class, 'addressU
     ->name('address.update');
 
 Route::get('/mypage', [ProfileController::class, 'index'])
-    ->middleware('auth')
+    ->middleware('auth', 'verified')
     ->name('profile.index');
 Route::get('/mypage/profile', [ProfileController::class, 'edit'])
     ->middleware(['auth', 'verified'])
