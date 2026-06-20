@@ -20,6 +20,7 @@ cp .env.example .env
 ```bash
 php artisan key:generate
 php artisan migrate
+php artisan db:seed
 ```
 
 ## 使用技術

@@ -59,14 +59,9 @@
     align-items: center;
 }
 
-.item-detail__action i {
-    font-size: 30px;
-    height: 30px;
-    margin-bottom: 2px;
-}
-
 .item-detail__action p {
-    margin: 0 0 10px;
+    margin: 6px 0 0;
+    line-height: 1;
 }
 
 .item-detail__purchase {
@@ -79,7 +74,7 @@
     text-decoration: none;
     font-weight: bold;
     border-radius: 4px;
-    margin-bottom: 30px;
+    margin: 15px 0;
     border: none;
     cursor: pointer;
 }
@@ -110,8 +105,15 @@
     cursor: pointer;
 }
 
-.liked {
-    color: #ff5555;
+.item-detail__icon {
+    width: 32px;
+    height: 32px;
+    object-fit: contain;
+    display: block;
+}
+
+.item-detail__comment p {
+    padding-top: 4px;
 }
 
 .item-detail__info-label {
