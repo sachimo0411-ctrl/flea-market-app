@@ -25,7 +25,7 @@ php artisan db:seed
 
 ## 使用技術
 - php 8.1-fpm
-- Laravel 10.x
+- Laravel 8.x
 - MySQL 8.0.26
 - nginx 1.21.1
 
