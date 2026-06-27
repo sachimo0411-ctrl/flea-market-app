@@ -57,7 +57,7 @@
         <div class="sell-form__group">
             <label class="sell-form__label" for="condition">商品の状態</label>
             <select class="sell-form__select" name="condition" id="condition">
-                <option value="">選択してください</option>
+                <option value="" disabled selected hidden>選択してください</option>
                 <option value="良好" {{ old('condition') == '良好' ? 'selected' : '' }}>良好</option>
                 <option value="目立った傷や汚れなし" {{ old('condition') == '目立った傷や汚れなし' ? 'selected' : '' }}>目立った傷や汚れなし</option>
                 <option value="やや傷や汚れあり" {{ old('condition') == 'やや傷や汚れあり' ? 'selected' : '' }}>やや傷や汚れあり</option>

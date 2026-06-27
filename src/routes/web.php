@@ -33,49 +33,47 @@ Route::get('/', [ItemController::class, 'index'])
 Route::get('/item/{item_id}', [ItemController::class, 'show'])
     ->name('items.show');
 
+
 Route::get('/email/verify', function () {
     return view('auth.verify-email');
 })
     ->middleware('auth')
     ->name('verification.notice');
-
 Route::get('/email/verify/{id}/{hash}', function(EmailVerificationRequest $request) {
     $request->fulfill();
     return redirect('/mypage/profile');
 })
     ->middleware(['auth', 'signed', 'throttle:6,1'])->name('verification.verify');
-
 Route::post('/email/verification-notification', function (Request $request) {
     $request->user()->sendEmailVerificationNotification();
-
     return back();
 })
     ->middleware(['auth', 'throttle:6,1'])
     ->name('verification.send');
 
+
 Route::post('/item/{item_id}/like', [LikeController::class, 'toggle'])
     ->middleware('auth')
     ->name('items.like');
-
 Route::post('/item/{item_id}/comment', [CommentController::class, 'store'])
     ->middleware('auth')
     ->name('items.comment');
 
+
 Route::get('/purchase/{item_id}', [PurchaseController::class, 'index'])
     ->middleware('auth')
     ->name('purchase.index');
-
 Route::post('/purchase/{item_id}', [PurchaseController::class, 'store'])
     ->middleware('auth')
     ->name('purchase.store');
-
 Route::get('/purchase/address/{item_id}', [PurchaseController::class, 'addressEdit'])
     ->name('address.edit');
 Route::post('/purchase/address/{item_id}', [PurchaseController::class, 'addressUpdate'])
     ->name('address.update');
 
+
 Route::get('/mypage', [ProfileController::class, 'index'])
-    ->middleware('auth', 'verified')
+    ->middleware(['auth', 'verified'])
     ->name('profile.index');
 Route::get('/mypage/profile', [ProfileController::class, 'edit'])
     ->middleware(['auth', 'verified'])
@@ -84,6 +82,7 @@ Route::patch('/mypage/profile', [ProfileController::class, 'update'])
     ->middleware('auth')
     ->name('profile.update');
 
+    
 Route::get('/sell', [SellController::class, 'create'])
     ->middleware('auth')
     ->name('sell.create');
